@@ -1,0 +1,98 @@
+.drop-down-container {
+      margin: 0 10px;
+      height: 100px;
+      width: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      top: 100%;
+}
+
+.drop-down-container.drop-down-visible {
+      display: flex;
+      align-items: center;
+}
+
+label {
+      margin: 0 5px;
+}
+
+.drop-down-header {
+      padding: 10px 24px;
+      border: solid grey 1px;
+      border-radius: 5px;
+      font-weight: 300;
+      font-size: 16px;
+      color: #131923;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      width: 200px;
+}
+
+.drop-down-header span {
+      display: flex;
+}
+
+.drop-down-header:active {
+      border: solid wheat;
+}
+
+.drop-down-header:focus {
+      border: solid wheat;
+}
+
+.drop-down-list-container {
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      background: #f8f4f1;
+      border: grey 1px;
+}
+
+ul.drop-down-list {
+      background: #ffffff;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      box-sizing: border-box;
+      color: black;
+      font-family: "Nunito Sans";
+      font-weight: 500;
+      /* padding: 10px 10px; */
+      max-height: 240px;
+      overflow: scroll;
+}
+
+ul.drop-down-list:hover {
+      cursor: pointer;
+}
+
+ul.drop-down-list:first-child {
+      padding-top: 24px;
+}
+
+.list-item {
+      list-style: none;
+      margin-bottom: 18px;
+      z-index: 10;
+}
+
+.list-item:hover {
+      background-color: wheat;
+      color: white;
+      cursor: pointer;
+}
+
+.menu-icon {
+      /* height: 30px; */
+      padding-left: 20px;
+      transition: transform 0.3s ease;
+}
+
+.menu-icon.open {
+      transform: rotate(180deg);
+      /* transform-origin ensures icon flips in placed */
+      transform-origin: 80% 50%;
+}
