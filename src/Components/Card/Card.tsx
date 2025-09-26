@@ -4,6 +4,7 @@ type flags = {
 	svg: string;
 	png: string;
 };
+
 interface CardProps {
 	flags: flags;
 	name: string;
@@ -16,7 +17,7 @@ const Card = ({ flags, name, population, region, capital }: CardProps) => {
 	return (
 		<div className="card-container">
 			<div className="flag-img">
-				<img src={flags.png} alt="country flag" />
+				<img className="card-flag" src={flags.png} alt="country flag" />
 			</div>
 			<div className="title">{name}</div>
 			<div className="details">

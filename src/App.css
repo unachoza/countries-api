@@ -11,6 +11,7 @@ h1{
 .filters-container{
   display: flex;
   justify-content: space-between;
+  margin: var(--spacing-1100) var(--spacing-1000);
 }
 
 .country-card-container{

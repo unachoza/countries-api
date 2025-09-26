@@ -1,6 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import LoadingSpinner from "./Components/LoadingSpinner/LoadingSpinner";
 import Input from "./Components/Form/Input/Input";
 import DropDownMenu from "./Components/Form/DropDown/DropDown";
@@ -8,6 +6,8 @@ import "./App.css";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import countriesData from "./data.json";
 import Card from "./Components/Card/Card";
+import Header from "./Components/Header/Header";
+import Page from "./Components/Page/Page";
 
 function App() {
 	const [search, setSearch] = useState<string>("");
@@ -34,12 +34,11 @@ function App() {
 		const newValue = e.target.value;
 		setSearch(newValue);
 	}
-console.log(countriesData)
+	console.log(countriesData);
 	return (
 		<>
-			<div className="header">
-				<h1>Where in the World?</h1>
-			</div>
+			<Header text="Where in the World?" />
+
 			<div className="filters-container">
 				<Input
 					id="search"
@@ -52,8 +51,9 @@ console.log(countriesData)
 				/>
 				<DropDownMenu setValue={setRegion} values={regionsTypes} label="Filter by Region" />
 			</div>
+			<Page {...countriesData[0]} />
 			{/* <div className="card">{isPending ? <LoadingSpinner /> : JSON.stringify(data)}</div> */}
-      
+
 			<div className="country-card-container">
 				{countriesData.map((countryData: any) => {
 					return <Card {...countryData} />;

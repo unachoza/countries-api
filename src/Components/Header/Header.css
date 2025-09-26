@@ -1,0 +1,20 @@
+.header{
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      color: var(--Grey-950);
+      font: var(--Text-Present-2);
+      background: var(--colors-white, #FFF);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+      padding: var(--spacing-500) var(--spacing-1000);
+
+}
+
+.fixed-top {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 10;
+      height: var(--spacing-1000);
+}
