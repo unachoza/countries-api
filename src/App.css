@@ -5,17 +5,22 @@
 
 h1{
   color: var(--colors-grey-950, #111517);
-  font-feature-settings: 'liga' off, 'clig' off;
-
-  /* Text Preset 2 - Nunito Sans ExtaBold - 24px - 137.5% Line Height - 0px Line Spacing */
-  font-family: "Nunito Sans";
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 137.5%; /* 33px */
+  font: var(--Text-Present-2)
 }
 
 .filters-container{
   display: flex;
   justify-content: space-between;
+}
+
+.country-card-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  /* display: flex;
+width: 1272px;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-900, 72px); */
 }

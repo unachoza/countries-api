@@ -1,26 +1,3 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: var(--colors-grey-50, #FCFCFC);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  --Marron: #580005; 
-  --Marron-Light: #95060d; 
-  --Black: #111;
-
-  --spinner-color: (var(--Marron));
-  --spinner-back-color: (var(--Marron-Light));
-  --back-color: #111
-}
-
 /* CSS RESET  */
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
@@ -67,4 +44,71 @@ h1, h2, h3, h4, h5, h6 {
 */
 #root, #__next {
   isolation: isolate;
+}
+
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--colors-grey-50, #FCFCFC);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /*** VARIABLES ***/
+
+  /* Colors */
+  --Black: #000000;
+  --White: #FFFFFF;
+
+  --Grey-950: #111517;
+  --Grey-400: #808080;
+  --Grey-350: #979797;
+  --Grey-300: #B2B2B2;
+  --Grey-250: #C4C4C4;
+  --Grey-50: #FCFCFC;
+
+  --Blue-950: #202C36;
+  --Blue-900: #2B3844;
+
+  --Marron: #580005; 
+  --Marron-Light: #95060d; 
+  --Black: #111;
+
+  --spinner-color: (var(--Marron));
+  --spinner-back-color: (var(--Marron-Light));
+  --back-color: #111;
+
+  /* Typography */
+  /* font: [font-weight] [font-size]/[line-height] [font-family]; */
+  --Text-Present-1: 800 2rem/1.375 "Nunito Sans";
+  --Text-Present-2: 800 1.5rem/1.375 "Nunito Sans";
+  --Text-Present-3: 800 1rem/1.45 "Nunito Sans";
+  --Text-Present-4-SemiBold: 600 1rem/2 "Nunito Sans";
+  --Text-Present-4-Light: 100 1rem/2 "Nunito Sans";
+  --Text-Present-5-Regular: 400 .875rem/1.45 "Nunito Sans";
+  --Text-Present-5-Light: 300 .875rem/2.25 "Nunito Sans";
+  --Text-Present-6-SemiBold: 600 .75rem/1.35 "Nunito Sans";
+  --Text-Present-6-Regular: 400 .75rem/1.35 "Nunito Sans";
+  --Text-Present-6-Light: 300 .75rem/1.35 "Nunito Sans";
+
+  /* Spacing */
+  --spacing-100: .5rem;
+  --spacing-200: 1rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2rem;
+  --spacing-500: 2.5rem;
+  --spacing-600: 3rem;
+  --spacing-700: 3.5rem;
+  --spacing-800: 4rem;
+  --spacing-900: 4.5rem;
+  --spacing-1000: 5rem;
+
+
 }
