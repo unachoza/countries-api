@@ -6,6 +6,8 @@ import Input from "./Components/Form/Input/Input";
 import DropDownMenu from "./Components/Form/DropDown/DropDown";
 import "./App.css";
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import countriesData from "./data.json";
+import Card from "./Components/Card/Card";
 
 function App() {
 	const [search, setSearch] = useState<string>("");
@@ -13,15 +15,16 @@ function App() {
 	const regionsTypes = ["Africa", "America", "Europe", "Asia", "Oceana"];
 
 	const getSpain = async () => {
-		await new Promise((resolve) => setTimeout(resolve, 1000));
-		const response = await fetch("https://restcountries.com/v3.1/name/spain");
+		// await new Promise((resolve) => setTimeout(resolve, 1000));
+		const response = await fetch("https://restcountries.com/v3.1/all");
+		// const response = await fetch(`https://restcountries.com/v3.1/name/${country}`);
 		return await response.json();
 	};
 
-	const { data, isPending } = useQuery({
-		queryKey: ["countries"],
-		queryFn: getSpain,
-	});
+	// const { data, isPending } = useQuery({
+	// 	queryKey: ["countries"],
+	// 	queryFn: getSpain,
+	// });
 
 	// const handleSearch = (e:FormEvent) => {
 	//   const searchQuery = e.target.value
@@ -31,7 +34,7 @@ function App() {
 		const newValue = e.target.value;
 		setSearch(newValue);
 	}
-
+console.log(countriesData)
 	return (
 		<>
 			<div className="header">
@@ -49,8 +52,13 @@ function App() {
 				/>
 				<DropDownMenu setValue={setRegion} values={regionsTypes} label="Filter by Region" />
 			</div>
-			<div className="card">{isPending ? <LoadingSpinner /> : JSON.stringify(data)}</div>
-			<p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+			{/* <div className="card">{isPending ? <LoadingSpinner /> : JSON.stringify(data)}</div> */}
+      
+			<div className="country-card-container">
+				{countriesData.map((countryData: any) => {
+					return <Card {...countryData} />;
+				})}
+			</div>
 		</>
 	);
 }

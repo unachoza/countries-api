@@ -1,0 +1,44 @@
+.card-container {
+      display: flex;
+      width: 264px;
+      height: 336px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-0, 0);
+      border-radius: 5px;
+      background: var(--colors-white, #FFF);
+      box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.10);
+}
+
+.flag-img img{
+      width: 264px;
+      height: 190.24px;
+}
+
+.title{
+      color: var(--Grey-950, #111517);
+      font: var(--Text-Present-3);
+      margin-top: ;
+      margin-top: 1.375rem;
+      margin-left: 1.625rem;
+      margin-bottom: var(--spacing-200);
+}
+
+.details{
+      color: var(--Grey-950);
+      font: 600 .875rem/1.14 "Nunito Sans";
+      margin-left: 1.625rem;
+     
+}
+
+.details div{
+      color: var(--Grey-950);
+      font: 600 .875rem/1.14 "Nunito Sans";
+      margin-bottom: var(--spacing-100);
+      
+}
+
+div.details span  {
+      color: var(--Grey-950);
+      font: 300 .875rem/1.14 "Nunito Sans";
+}

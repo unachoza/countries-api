@@ -14,13 +14,9 @@ h1{
 }
 
 .country-card-container{
+  margin-left: var(--spacing-1100);
+  margin-top: var(--spacing-600);
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-
-  /* display: flex;
-width: 1272px;
-flex-direction: column;
-align-items: flex-start;
-gap: var(--spacing-900, 72px); */
+  gap: var(--spacing-900);
 }
