@@ -1,30 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQueries, useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "./Components/LoadingSpinner/LoadingSpinner";
 import Input from "./Components/Form/Input/Input";
 import DropDownMenu from "./Components/Form/DropDown/DropDown";
 import "./App.css";
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import countriesData from "./data.json";
 import Card from "./Components/Card/Card";
 import Header from "./Components/Header/Header";
 import Page from "./Components/Page/Page";
+import { getCountryQueryOptions, getAllCountriesQueryOptions } from "./api/countries";
 
 function App() {
-	const [search, setSearch] = useState<string>("");
+	const [countryQuery, setCountryQuery] = useState<string>("peru");
 	const [region, setRegion] = useState<string>("all");
 	const regionsTypes = ["Africa", "America", "Europe", "Asia", "Oceana"];
 
-	const getSpain = async () => {
-		// await new Promise((resolve) => setTimeout(resolve, 1000));
-		const response = await fetch("https://restcountries.com/v3.1/all");
-		// const response = await fetch(`https://restcountries.com/v3.1/name/${country}`);
-		return await response.json();
-	};
-
-	// const { data, isPending } = useQuery({
-	// 	queryKey: ["countries"],
-	// 	queryFn: getSpain,
-	// });
+	const [allcountries, singleCountry] = useQueries({
+		queries: [getAllCountriesQueryOptions(), getCountryQueryOptions(countryQuery)],
+	});
 
 	// const handleSearch = (e:FormEvent) => {
 	//   const searchQuery = e.target.value
@@ -32,9 +24,9 @@ function App() {
 
 	function handleSearch(e: ChangeEvent<HTMLInputElement>) {
 		const newValue = e.target.value;
-		setSearch(newValue);
+		setCountryQuery(newValue);
 	}
-	console.log(countriesData);
+	
 	return (
 		<>
 			<Header text="Where in the World?" />
@@ -45,19 +37,23 @@ function App() {
 					label="search"
 					name="search"
 					type="text"
-					value={search}
+					value={countryQuery}
 					placeholder="Search for a Country ..."
 					handleChange={handleSearch}
 				/>
 				<DropDownMenu setValue={setRegion} values={regionsTypes} label="Filter by Region" />
 			</div>
-			<Page {...countriesData[0]} />
-			{/* <div className="card">{isPending ? <LoadingSpinner /> : JSON.stringify(data)}</div> */}
-
+			{singleCountry.data && <Page {...singleCountry.data[0]} />}
 			<div className="country-card-container">
-				{countriesData.map((countryData: any) => {
-					return <Card {...countryData} />;
-				})}
+				{allcountries.isPending ? (
+					<LoadingSpinner />
+				) : (
+					<div className="country-card-container">
+						{allcountries.data.map((countryData: any) => {
+							return <Card {...countryData} />;
+						})}
+					</div>
+				)}
 			</div>
 		</>
 	);

@@ -20,33 +20,44 @@ type LanguageType = {
 	nativeName: string;
 };
 
-interface PageProps {
+type NameType = {
+	common: string;
+	nativeName: LooseObject;
+	official: string;
+};
+
+interface LooseObject {
+	[key: string]: any;
+}
+
+export interface PageProps {
 	flags: FlagsType;
-	name: string;
+	name: NameType;
 	nativeName: string;
 	population: number;
 	region: string;
 	subregion: string;
 	capital: string;
 	topLevelDomain: string[];
-	currencies: CurrenciesType[];
-	languages: LanguageType[];
+	currencies: LooseObject;
+	languages: LooseObject;
 	borders: string[];
 }
 
 const Page = ({ flags, name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, borders }: PageProps) => {
+	console.log(flags, name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, borders);
 	return (
 		<div className="Page-container">
 			<Button text="Back" />
 			<main>
 				<div className="flag-img">
-					<img className="page-flag" src={flags.png} alt="country flag" />
+					<img className="page-flag" src={flags.svg} alt="country flag" />
 				</div>
 				<div className="country-info-container">
-					<div className="title">{name}</div>
+					<div className="title">{name.common}</div>
 					<div className="stats-container">
 						<div className="stat-label">
-							Native Name: <span>{nativeName}</span>
+							Native Name: <span>{name.nativeName[0]?.common}</span>
 						</div>
 						<div className="stat-label">
 							Population: <span>{population}</span>
@@ -64,18 +75,13 @@ const Page = ({ flags, name, nativeName, population, region, subregion, capital,
 							Top Level Domain: <span>{topLevelDomain}</span>
 						</div>
 						<div className="stat-label">
-							Currencies:{" "}
-							<span>
-								{currencies.map((currency: CurrenciesType) => {
-									return <span>{currency.name}</span>;
-								})}
-							</span>
+							Currencies: <span>{Object.values(currencies)[0].name}</span>
 						</div>
 						<div className="stat-label">
 							Languages:{" "}
 							<span>
-								{languages.map((language: LanguageType) => {
-									return <span>{language.name}</span>;
+								{Object.values(languages).map((language: string) => {
+									return <span>{language}</span>;
 								})}
 							</span>
 						</div>
