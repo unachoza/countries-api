@@ -3,16 +3,16 @@ import { type CardProps, type PageProps } from "../types/types";
 const BASE_URL = "https://restcountries.com/v3.1/";
 
 const normalizeCountryData = (country: CardProps) => ({
-	flags: country.flags.png,
 	name: country.name.common,
+	flags: country.flags.png,
 	population: country.population,
 	region: country.region,
 	capital: country.capital[0],
 });
 
 const normalizeCountryDetailsData = (country: PageProps) => ({
-	flags: country.flags.svg,
 	name: country.name.common,
+	flags: country.flags.svg,
 	nativeName: Object.entries(country.name.nativeName)[Object.entries(country.name.nativeName).length - 1][1]?.common,
 	population: country.population,
 	region: country.region,

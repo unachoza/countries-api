@@ -10,7 +10,7 @@ interface CardTypeProps {
 
 const Card = ({ flags, name, population, region, capital }: CardTypeProps) => {
 	return (
-		<div className="card-container">
+		<div className={`card-container filter-item ${region}`}>
 			<div className="flag-img">
 				<img className="card-flag" src={flags} alt="country flag" />
 			</div>

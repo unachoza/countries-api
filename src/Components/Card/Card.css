@@ -13,6 +13,7 @@
 img.card-flag{
       width: 264px;
       height: 190.24px;
+      border-radius: 5px 5px 0px 0px;
 }
 
 .title{
@@ -28,7 +29,6 @@ img.card-flag{
       color: var(--Grey-950);
       font: 600 .875rem/1.14 "Nunito Sans";
       margin-left: 1.625rem;
-     
 }
 
 .details div{
