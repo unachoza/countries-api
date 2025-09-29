@@ -1,12 +1,11 @@
-import { useParams } from "react-router";
-import { useNavigate } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import Button from "../Components/Button/Button";
 import Pill from "../Components/Pill/Pill";
 import useCountryQuery from "../hooks/useSingleCountry";
 import LoadingSpinner from "../Components/LoadingSpinner/LoadingSpinner";
 import backArrow from "../assets/icons/back-arrow.svg";
-import "./CountryPage.css";
 import useAllCountriesQuery from "../hooks/useAllCountries";
+import "./CountryPage.css";
 
 const CountryPage = () => {
 	const { countryName } = useParams();

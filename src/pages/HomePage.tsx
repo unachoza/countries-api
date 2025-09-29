@@ -4,8 +4,9 @@ import LoadingSpinner from "../Components/LoadingSpinner/LoadingSpinner";
 import Input from "../Components/Form/Input/Input";
 import DropDownMenu from "../Components/Form/DropDown/DropDown";
 import Card from "../Components/Card/Card";
-import "../App.css";
 import useAllCountriesQuery from "../hooks/useAllCountries";
+import type { CountryType } from "../types/types";
+import "../App.css";
 
 function App() {
 	const containerRef = useRef<HTMLDivElement | null>(null);
@@ -17,6 +18,8 @@ function App() {
 	const allcountries = useAllCountriesQuery();
 
 	const regionsTypes = ["Filter By Region", "Africa", "Americas", "Europe", "Asia", "Oceania", "Polar", "Antarctic"];
+
+	let filteredCountries: CountryType[] = [];
 
 	function handleSearch(e: ChangeEvent<HTMLInputElement>) {
 		setSearchQuery(e.target.value);
@@ -45,11 +48,9 @@ function App() {
 
 		const filter = filterKeyRegion === "*" || filterKeyRegion === "Filter By Region" ? "*" : `.filter-item.${filterKeyRegion}`;
 		isotope.current.arrange({ filter });
-	}, [filterKeyRegion]);
+	}, [filterKeyRegion, filteredCountries]);
 
-	// --- TODO FIX
-	//  filter countries by search text doesn't bring cards to top unless window resizes
-	const filteredCountries =
+	filteredCountries =
 		searchQuery.length > 0 && allcountries.data
 			? allcountries.data.filter((c: any) => c.name.toLowerCase().includes(searchQuery.toLowerCase()))
 			: allcountries.data || [];
@@ -74,9 +75,13 @@ function App() {
 				<LoadingSpinner />
 			) : (
 				<div ref={containerRef} className="country-card-container filter-container">
-					{filteredCountries.map((countryData: any) => (
-						<Card key={countryData.name} countryName={countryData.name} {...countryData} />
-					))}
+					{filteredCountries.length === 0 ? (
+						<p>no country found</p>
+					) : (
+						filteredCountries.map((countryData: any) => (
+							<Card key={countryData.name} countryName={countryData.name} {...countryData} />
+						))
+					)}
 				</div>
 			)}
 		</>

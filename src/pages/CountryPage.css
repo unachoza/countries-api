@@ -34,7 +34,6 @@ img.page-flag {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
-      /* border: solid red; */
 }
 
 .stat-label{

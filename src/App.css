@@ -22,3 +22,10 @@ h1{
   flex-wrap: wrap;
   gap: var(--spacing-900);
 }
+
+p {
+  color: var(--Grey-950);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

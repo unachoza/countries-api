@@ -1,14 +1,14 @@
 import { queryOptions } from "@tanstack/react-query";
-import { type CardProps, type CountryDetailsType } from "../types/types";
+import { type CountryType, type CountryDetailsType } from "../types/types";
 const BASE_URL = "https://restcountries.com/v3.1/";
 
-const normalizeCountryData = (country: CardProps) => ({
+const normalizeCountryData = (country: CountryType) => ({
 	name: country.name.common,
 	cca3: country.cca3,
 	flags: country.flags.png,
-	population: country.population,
+	population: formatNumber(country.population),
 	region: country.region,
-	capital: country.capital[0],
+	capital: country.capital[0] || "N/A",
 });
 
 const normalizeCountryDetailsData = (country: CountryDetailsType) => {
@@ -20,7 +20,7 @@ const normalizeCountryDetailsData = (country: CountryDetailsType) => {
 		code: country.cca3,
 		flags: country.flags.svg,
 		nativeName: lastNativeName,
-		population: country.population,
+		population: formatNumber(country.population),
 		region: country.region,
 		subregion: country.subregion,
 		capital: country.capital[0],
@@ -40,11 +40,15 @@ const normalizeCodeData = (country: any) => {
 	};
 };
 
+const formatNumber = (number: number, locale = "en-US") => {
+	return new Intl.NumberFormat(locale).format(number);
+};
+
 export const getAllCountries = async () => {
 	await new Promise((resolve) => setTimeout(resolve, 1000));
 	const response = await fetch(`${BASE_URL}all?fields=name,cca3,capital,flags,region,population`);
 	const data = await response.json();
-	return data.map((countrydata: CardProps) => normalizeCountryData(countrydata));
+	return data.map((countrydata: CountryType) => normalizeCountryData(countrydata));
 };
 
 export const getSingleCountry = async (countryQuery: string) => {
