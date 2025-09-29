@@ -78,3 +78,10 @@ div.label{
 .stat-label span span {
       gap: var(--spacing-200);
 }
+
+main p {
+      color: var(--Grey-950);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+}

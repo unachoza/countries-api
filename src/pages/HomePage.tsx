@@ -12,11 +12,11 @@ function App() {
 	const isotope = useRef<Isotope | null>(null);
 
 	const [searchQuery, setSearchQuery] = useState("");
-	const [filterKeyRegion, setFilterKeyRegion] = useState("*");
+	const [filterKeyRegion, setFilterKeyRegion] = useState("Filter By Region");
 
 	const allcountries = useAllCountriesQuery();
 
-	const regionsTypes = ["Africa", "Americas", "Europe", "Asia", "Oceania"];
+	const regionsTypes = ["Filter By Region", "Africa", "Americas", "Europe", "Asia", "Oceania", "Polar", "Antarctic"];
 
 	function handleSearch(e: ChangeEvent<HTMLInputElement>) {
 		setSearchQuery(e.target.value);
@@ -34,19 +34,21 @@ function App() {
 			layoutMode: "fitRows",
 		});
 
-		isotope.current.arrange({ filter: filterKeyRegion === "*" ? "*" : `.filter-item.${filterKeyRegion}` });
+		isotope.current.arrange({
+			filter: filterKeyRegion === "*" || filterKeyRegion === "Filter By Region" ? "*" : `.filter-item.${filterKeyRegion}`,
+		});
 	}, [allcountries.data]);
 
 	// --- Apply filter whenever filterKeyRegion changes from DropDown Menu
 	useEffect(() => {
 		if (!isotope.current) return;
 
-		const filter = filterKeyRegion === "*" ? "*" : `.filter-item.${filterKeyRegion}`;
+		const filter = filterKeyRegion === "*" || filterKeyRegion === "Filter By Region" ? "*" : `.filter-item.${filterKeyRegion}`;
 		isotope.current.arrange({ filter });
 	}, [filterKeyRegion]);
 
 	// --- TODO FIX
-	//  filter countries by search text (frontend filtering) doesn't work when combined with multiple dropdowns and searches
+	//  filter countries by search text doesn't bring cards to top unless window resizes
 	const filteredCountries =
 		searchQuery.length > 0 && allcountries.data
 			? allcountries.data.filter((c: any) => c.name.toLowerCase().includes(searchQuery.toLowerCase()))

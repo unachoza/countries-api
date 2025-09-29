@@ -65,7 +65,7 @@ ul.drop-down-list {
       color: black;
       font-family: "Nunito Sans";
       font-weight: 500;
-      max-height: 240px;
+      max-height: 310px;
       overflow: scroll;
       z-index: 100;
 }
