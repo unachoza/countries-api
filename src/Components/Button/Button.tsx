@@ -1,4 +1,6 @@
 import type { JSX } from "react";
+import { useNavigate } from "react-router";
+import backArrow from "../../assets/icons/back-arrow.svg";
 import "./Button.css";
 
 interface ButtonProps {
@@ -6,6 +8,14 @@ interface ButtonProps {
 }
 
 function Button({ text }: ButtonProps): JSX.Element {
-	return <button >{text}</button>;
+	let navigate = useNavigate();
+	return (
+		<button onClick={() => navigate(-1)}>
+			<span>
+				<img src={backArrow} alt="back" />
+			</span>
+			{text}
+		</button>
+	);
 }
 export default Button;

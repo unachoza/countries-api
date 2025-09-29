@@ -4,6 +4,7 @@ const BASE_URL = "https://restcountries.com/v3.1/";
 
 const normalizeCountryData = (country: CardProps) => ({
 	name: country.name.common,
+	cca3: country.cca3,
 	flags: country.flags.png,
 	population: country.population,
 	region: country.region,
@@ -11,12 +12,12 @@ const normalizeCountryData = (country: CardProps) => ({
 });
 
 const normalizeCountryDetailsData = (country: CountryDetailsType) => {
-	console.log({ country });
 	const nativeNameEntries = Object.entries(country.name.nativeName);
 	const lastNativeName = nativeNameEntries[nativeNameEntries.length - 1]?.[1]?.common;
 
 	return {
 		name: country.name.common,
+		code: country.cca3,
 		flags: country.flags.svg,
 		nativeName: lastNativeName,
 		population: country.population,
@@ -25,8 +26,17 @@ const normalizeCountryDetailsData = (country: CountryDetailsType) => {
 		capital: country.capital[0],
 		topLevelDomain: country.tld,
 		currencies: Object.values(country.currencies).map((currency: any) => currency.name),
+		currencySymbol: Object.values(country.currencies).map((currency: any) => currency.symbol),
 		languages: Object.values(country.languages).map((language) => language),
 		borders: country.borders,
+	};
+};
+
+const normalizeCodeData = (country: any) => {
+	console.log(country);
+	return {
+		code: country.cca3,
+		countryName: country.name.common,
 	};
 };
 
@@ -40,8 +50,13 @@ export const getAllCountries = async () => {
 export const getSingleCountry = async (countryQuery: string) => {
 	const response = await fetch(`${BASE_URL}name/${countryQuery}`);
 	const data = await response.json();
-	console.log({ data });
 	return data.map((singleCountry: any) => normalizeCountryDetailsData(singleCountry));
+};
+
+export const getCountryByCode = async (code: string) => {
+	const response = await fetch(`${BASE_URL}alpha/${code}?fields=name,cca3`);
+	const data = await response.json();
+	return data.map((data: any) => normalizeCodeData(data));
 };
 
 export function getCountryQueryOptions(countryQuery: string) {

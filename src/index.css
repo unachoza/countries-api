@@ -45,7 +45,10 @@ h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
-
+a{
+  text-decoration: none;
+  color: inherit;
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -79,11 +82,9 @@ h1, h2, h3, h4, h5, h6 {
 
   --Marron: #580005; 
   --Marron-Light: #95060d; 
-  --Black: #111;
 
   --spinner-color: (var(--Marron));
   --spinner-back-color: (var(--Marron-Light));
-  --back-color: #111;
 
   /* Typography */
   /* font: [font-weight] [font-size]/[line-height] [font-family]; */

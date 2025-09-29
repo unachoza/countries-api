@@ -4,7 +4,6 @@ import LoadingSpinner from "../Components/LoadingSpinner/LoadingSpinner";
 import Input from "../Components/Form/Input/Input";
 import DropDownMenu from "../Components/Form/DropDown/DropDown";
 import Card from "../Components/Card/Card";
-import Header from "../Components/Header/Header";
 import "../App.css";
 import useAllCountriesQuery from "../hooks/useAllCountries";
 
@@ -55,8 +54,6 @@ function App() {
 
 	return (
 		<>
-			<Header text="Where in the World?" />
-
 			<div className="filters-container">
 				<Input
 					id="search"

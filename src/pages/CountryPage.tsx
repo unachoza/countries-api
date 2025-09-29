@@ -3,11 +3,13 @@ import Button from "../Components/Button/Button";
 import Pill from "../Components/Pill/Pill";
 import useCountryQuery from "../hooks/useSingleCountry";
 import LoadingSpinner from "../Components/LoadingSpinner/LoadingSpinner";
-import "../Components/Page/Page.css";
+import "./CountryPage.css";
+import useAllCountriesQuery from "../hooks/useAllCountries";
 
 const CountryPage = () => {
 	const { countryName } = useParams();
 	const singleCountry = useCountryQuery(countryName!);
+	const allcountries = useAllCountriesQuery();
 
 	if (singleCountry.isPending) {
 		return (
@@ -20,9 +22,20 @@ const CountryPage = () => {
 		);
 	}
 
+	if (singleCountry.error) {
+		return (
+			<div className="page-container">
+				<Button text="Back" />
+				<main>
+					<p>Error</p>
+				</main>
+			</div>
+		);
+	}
+
 	if (!singleCountry.data || singleCountry.data.length === 0) {
 		return (
-			<div className="Page-container">
+			<div className="page-container">
 				<Button text="Back" />
 				<main>
 					<p>No country data found</p>
@@ -31,11 +44,16 @@ const CountryPage = () => {
 		);
 	}
 
-	const { flags, name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, borders } =
+	const { flags, name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, currencySymbol, languages, borders } =
 		singleCountry.data[0];
 
+	const boarderCountryNames = borders.map((borderCode: string) => {
+		const match = allcountries.data?.find((country: { cca3: string }) => country.cca3 === borderCode);
+		return match ? match.name : borderCode;
+	});
+
 	return (
-		<div className="Page-container">
+		<div className="page-container">
 			<Button text="Back" />
 			<main>
 				{singleCountry.isPending ? (
@@ -67,7 +85,7 @@ const CountryPage = () => {
 									Top Level Domain: <span>{topLevelDomain[0]}</span>
 								</div>
 								<div className="stat-label">
-									Currencies: <span>{currencies[0]}</span>
+									Currencies: <span>{`${currencySymbol[0]} ${currencies[0]}`}</span>
 								</div>
 								<div className="stat-label">
 									Languages:{" "}
@@ -81,12 +99,10 @@ const CountryPage = () => {
 							<div className="border-country-container">
 								<div className="label">Border Countries:</div>
 								<div className="border-list">
-									{!borders ? (
-										<span>No boarder countries</span>
+									{boarderCountryNames.length === 0 ? (
+										<span>No border countries</span>
 									) : (
-										borders.map((country: string) => {
-											return <Pill text={country} />;
-										})
+										boarderCountryNames.map((country: string) => <Pill key={country} text={country} />)
 									)}
 								</div>
 							</div>

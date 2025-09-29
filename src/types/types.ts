@@ -10,7 +10,7 @@ type NativeNameType = {
 
 type NameType = {
 	common: string;
-	nativeName: NativeNameType;
+	nativeName: Record<string, NativeNameType>;
 	official: string;
 };
 
@@ -22,6 +22,7 @@ type CurrencyType = {
 export interface CardProps {
 	flags: FlagsType;
 	name: NameType;
+	cca3: string;
 	population: number;
 	region: string;
 	capital: string[];
@@ -30,6 +31,7 @@ export interface CardProps {
 export interface CountryDetailsType {
 	flags: FlagsType;
 	name: NameType;
+	cca3: string
 	nativeName: string;
 	population: number;
 	region: string;
@@ -37,6 +39,7 @@ export interface CountryDetailsType {
 	capital: string;
 	tld: string[];
 	currencies: Record<string, CurrencyType>;
+	currencySymbol: Record<string, CurrencyType>
 	languages: Record<string, string>;
 	borders?: string[];
 }

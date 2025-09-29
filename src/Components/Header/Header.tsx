@@ -1,4 +1,5 @@
 import type { JSX } from "react";
+import { Link } from "react-router";
 import "./Header.css";
 
 interface HeaderProps {
@@ -6,6 +7,11 @@ interface HeaderProps {
 }
 
 const Header = ({ text }: HeaderProps): JSX.Element => {
-	return <div className="header fixed-top">{text}</div>;
+	return (
+		<div className="header fixed-top">
+			<Link to="/">{text}</Link>
+			<div>theme</div>
+		</div>
+	);
 };
 export default Header;

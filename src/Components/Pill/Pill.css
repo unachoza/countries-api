@@ -1,14 +1,14 @@
 .pill-container{
       display: flex;
-      width: 96px;
+      width: 90px;
       height: 28px;
-      padding: var(--spacing-0, 0);
       justify-content: center;
       align-items: center;
-      gap: var(--spacing-0, 0);
       border-radius: 2px;
       color: var(--Grey-950);
       background: var(--colors-white, #FFF);
       box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.10);
       font: var(--Text-Present-6-Light);
+      margin: var(--spacing-100) var(--spacing-200) var(--spacing-100) 0 
+      
 }
