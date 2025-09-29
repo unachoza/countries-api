@@ -1,5 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
-import { type CardProps, type PageProps } from "../types/types";
+import { type CardProps, type CountryDetailsType } from "../types/types";
 const BASE_URL = "https://restcountries.com/v3.1/";
 
 const normalizeCountryData = (country: CardProps) => ({
@@ -10,19 +10,25 @@ const normalizeCountryData = (country: CardProps) => ({
 	capital: country.capital[0],
 });
 
-const normalizeCountryDetailsData = (country: PageProps) => ({
-	name: country.name.common,
-	flags: country.flags.svg,
-	nativeName: Object.entries(country.name.nativeName)[Object.entries(country.name.nativeName).length - 1][1]?.common,
-	population: country.population,
-	region: country.region,
-	subregion: country.subregion,
-	capital: country.capital[0],
-	topLevelDomain: country.tld,
-	currencies: Object.values(country.currencies).map((currency: any) => currency.name),
-	languages: Object.values(country.languages).map((language) => language),
-	borders: country.borders,
-});
+const normalizeCountryDetailsData = (country: CountryDetailsType) => {
+	console.log({ country });
+	const nativeNameEntries = Object.entries(country.name.nativeName);
+	const lastNativeName = nativeNameEntries[nativeNameEntries.length - 1]?.[1]?.common;
+
+	return {
+		name: country.name.common,
+		flags: country.flags.svg,
+		nativeName: lastNativeName,
+		population: country.population,
+		region: country.region,
+		subregion: country.subregion,
+		capital: country.capital[0],
+		topLevelDomain: country.tld,
+		currencies: Object.values(country.currencies).map((currency: any) => currency.name),
+		languages: Object.values(country.languages).map((language) => language),
+		borders: country.borders,
+	};
+};
 
 export const getAllCountries = async () => {
 	await new Promise((resolve) => setTimeout(resolve, 1000));

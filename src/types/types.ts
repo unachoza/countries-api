@@ -1,51 +1,33 @@
-type flags = {
-	svg: string;
-	png: string;
-};
-
-interface LooseObject {
-	[key: string]: string;
-}
-
-type NameObjectType = {
-	common: string;
-	nativeName: LooseObject;
-	official: string;
-};
-
-export interface CardProps {
-	flags: flags;
-	name: NameObjectType;
-	population: number;
-	region: string;
-	capital: string[];
-}
-
 type FlagsType = {
 	svg: string;
 	png: string;
 };
 
-type CurrenciesType = {
-	code: string;
-	name: string;
-	symbol: string;
-};
-
-type LanguageType = {
-	iso639_1: string;
-	iso639_2: string;
-	name: string;
-	nativeName: string;
+type NativeNameType = {
+	official: string;
+	common: string;
 };
 
 type NameType = {
 	common: string;
-	nativeName: LooseObject;
+	nativeName: NativeNameType;
 	official: string;
 };
 
-export interface PageProps {
+type CurrencyType = {
+	name: string;
+	symbol: string;
+};
+
+export interface CardProps {
+	flags: FlagsType;
+	name: NameType;
+	population: number;
+	region: string;
+	capital: string[];
+}
+
+export interface CountryDetailsType {
 	flags: FlagsType;
 	name: NameType;
 	nativeName: string;
@@ -54,7 +36,7 @@ export interface PageProps {
 	subregion: string;
 	capital: string;
 	tld: string[];
-	currencies: LooseObject;
-	languages: LooseObject;
-	borders: string[];
+	currencies: Record<string, CurrencyType>;
+	languages: Record<string, string>;
+	borders?: string[];
 }
