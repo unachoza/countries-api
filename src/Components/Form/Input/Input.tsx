@@ -1,10 +1,9 @@
-import { type ChangeEvent, type FormEvent, memo } from "react";
+import { type ChangeEvent, memo } from "react";
 import "./Input.css";
 
 interface InputProps {
 	id: string;
 	label?: string;
-	min?: number;
 	name: string;
 	type?: string;
 	className?: string;
@@ -14,7 +13,7 @@ interface InputProps {
 	handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FormInput = ({ id, label, name, className, value, errorMessage, placeholder, handleChange, min }: InputProps) => {
+const FormInput = ({ id, label, name, className, value, errorMessage, placeholder, handleChange }: InputProps) => {
 	return (
 		<label>
 			{label && <span className="label-text">{label}</span>}
@@ -27,7 +26,6 @@ const FormInput = ({ id, label, name, className, value, errorMessage, placeholde
 				placeholder={placeholder}
 				onChange={handleChange}
 				required
-				minLength={min}
 			/>
 			<div className="error-message" role="alert" id={`${name}-error`}>
 				{errorMessage}

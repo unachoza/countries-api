@@ -1,6 +1,6 @@
 .pill-container{
       display: flex;
-      width: 90px;
+      width: clamp(85px, 96px, 105px);
       height: 28px;
       justify-content: center;
       align-items: center;

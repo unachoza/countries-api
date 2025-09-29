@@ -21,15 +21,18 @@ label {
 
 .drop-down-header {
       padding: 10px 24px;
-      border: solid grey 1px;
+      border: none;
       border-radius: 5px;
+      box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.05);
       font-weight: 300;
       font-size: 16px;
       color: #131923;
       background: #ffffff;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       width: 200px;
+      height: 56px;
 }
 
 .drop-down-header span {
@@ -37,11 +40,11 @@ label {
 }
 
 .drop-down-header:active {
-      border: solid wheat;
+      border: solid var(--Grey-950);
 }
 
 .drop-down-header:focus {
-      border: solid wheat;
+      border: solid var(--Grey-950);
 }
 
 .drop-down-list-container {
@@ -62,7 +65,6 @@ ul.drop-down-list {
       color: black;
       font-family: "Nunito Sans";
       font-weight: 500;
-      /* padding: 10px 10px; */
       max-height: 240px;
       overflow: scroll;
       z-index: 100;
@@ -83,19 +85,17 @@ ul.drop-down-list:first-child {
 }
 
 .list-item:hover {
-      background-color: wheat;
+      background-color: var(--Grey-350);
       color: white;
       cursor: pointer;
 }
 
 .menu-icon {
-      /* height: 30px; */
       padding-left: 20px;
       transition: transform 0.3s ease;
 }
 
 .menu-icon.open {
       transform: rotate(180deg);
-      /* transform-origin ensures icon flips in placed */
       transform-origin: 80% 50%;
 }

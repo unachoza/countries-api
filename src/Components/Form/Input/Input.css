@@ -2,7 +2,7 @@ input {
       display: flex;
       width: 480px;
       height: 56px;
-      padding: var(--spacing-0, 0) var(--spacing-400, 32px);
+      padding: var(--spacing-0, 0) var(--spacing-400);
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
@@ -12,4 +12,14 @@ input {
       background: var(--colors-white, #FFF);
       box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.05);
       color: black;
+      border-radius: 5px;
+      background: var(--colors-white, #FFF);
+      box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.05);
+      border: none;
+}
+
+.icon{
+      padding-left: 25px;
+      background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat left;
+      background-size: 20px;
 }

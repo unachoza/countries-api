@@ -1,13 +1,21 @@
 .card-container {
       display: flex;
       width: 264px;
-      height: 336px;
+      height: 350px;
       flex-direction: column;
       align-items: flex-start;
       gap: var(--spacing-0, 0);
+      margin: var(--spacing-200);
       border-radius: 5px;
       background: var(--colors-white, #FFF);
       box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.10);
+      transition: all ease .4s;
+}
+
+.card-container:hover {
+      cursor: pointer;
+      box-shadow: 0 0 7px 4px rgba(0, 0, 0, 0.153);
+      border: solid var(--Grey-250);
 }
 
 img.card-flag{
@@ -35,7 +43,6 @@ img.card-flag{
       color: var(--Grey-950);
       font: 600 .875rem/1.14 "Nunito Sans";
       margin-bottom: var(--spacing-100);
-      
 }
 
 div.details span  {

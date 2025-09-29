@@ -10,7 +10,6 @@ const Header = ({ text }: HeaderProps): JSX.Element => {
 	return (
 		<div className="header fixed-top">
 			<Link to="/">{text}</Link>
-			<div>theme</div>
 		</div>
 	);
 };

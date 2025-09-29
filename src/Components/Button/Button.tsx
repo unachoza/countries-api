@@ -1,19 +1,16 @@
-import type { JSX } from "react";
-import { useNavigate } from "react-router";
-import backArrow from "../../assets/icons/back-arrow.svg";
+import type { JSX, MouseEventHandler } from "react";
 import "./Button.css";
 
 interface ButtonProps {
 	text: string;
+	element?: JSX.Element;
+	onClick: MouseEventHandler;
 }
 
-function Button({ text }: ButtonProps): JSX.Element {
-	let navigate = useNavigate();
+function Button({ text, element, onClick }: ButtonProps): JSX.Element {
 	return (
-		<button onClick={() => navigate(-1)}>
-			<span>
-				<img src={backArrow} alt="back" />
-			</span>
+		<button role="button" onClick={onClick}>
+			<span>{element}</span>
 			{text}
 		</button>
 	);

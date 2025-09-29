@@ -1,20 +1,22 @@
 button {
 	display: flex;
+	justify-content: space-evenly;
 	align-items: center;
-	justify-content: center;
-	border-radius: 5px;
-	color: var(--white);
-	background-color: var(--green-600);
+	width: 136px;
+	height: 40px;
+	gap: var(--spacing-150);
 	border: none;
-	font-size: 1.125rem;
-	font-weight: 600;
-	width: 100%;
-	padding: 1rem 2.5rem;
+	font: var(--Text-Present-4-Light);
+	color: var(--Black);
+	border-radius: 2px;
+	background: var(--White);
+	box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.10);
+	margin-bottom: var(--spacing-200);
 }
 
 button:hover {
 	cursor: pointer;
-	background-color: var(--grey-900);
+	border: solid var(--Grey-250);
 }
 
 button:focus {
