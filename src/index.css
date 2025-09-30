@@ -100,6 +100,7 @@ a{
   --Text-Present-6-Light: 300 .75rem/1.35 "Nunito Sans";
 
   /* Spacing */
+  --spacing-50: .25rem;
   --spacing-100: .5rem;
   --spacing-200: 1rem;
   --spacing-300: 1.5rem;

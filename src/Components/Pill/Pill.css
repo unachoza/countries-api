@@ -12,3 +12,11 @@
       margin: var(--spacing-100) var(--spacing-200) var(--spacing-100) 0 
       
 }
+@media (min-width: 20em) and (max-width: 35.3125em) {
+      .pill-container{
+            height: 40px;
+            padding: 5px;
+            margin: var(--spacing-50) var(--spacing-100) var(--spacing-50) 0;
+      }
+
+}
