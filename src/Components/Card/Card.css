@@ -27,7 +27,6 @@ img.card-flag{
 .title{
       color: var(--Grey-950, #111517);
       font: var(--Text-Present-3);
-      margin-top: ;
       margin-top: 1.375rem;
       margin-left: 1.625rem;
       margin-bottom: var(--spacing-200);

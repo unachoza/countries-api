@@ -84,3 +84,22 @@ main p {
       display: flex;
       justify-content: center;
 }
+
+@media (min-width: 20em) and (max-width: 35.3125em) {
+      .page-container{
+            padding: var(--spacing-100);
+            border: solid green;
+      }
+
+      main {
+            height: auto;
+      }
+
+      .country-info-container{
+            min-width:462px
+      }
+      
+      div.border-country-container{
+            margin: var(--spacing-100) var(--spacing-300);
+      }
+}
